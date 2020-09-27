@@ -109,12 +109,23 @@ def mars_facts():
         return None
 
     # assign columns to the new df
-    df.columns=['description','value']
+    df.columns=['Description','Value']
 
     # assign index
-    df.set_index('description', inplace=True)
+    df.set_index('Description', inplace=True)
     
-    return df.to_html()
+    # convert df back to html with pd.to_html()
+    # use the to_html() to change the type of table that is produced and adjust columne width for 
+    # aesthetics *D2*
+    facts_html = df.to_html(col_space=195, classes='table table-hover' )
+
+    # when setting 'description' to index, it introduces an extra cell to the left of value and the right of description. Since
+    # our html is now in string, I'm going to use regex to remove the characters that add those extra spaces for aesthetic
+    # purposes
+    import re
+    mars_facts = re.sub('(<thead[\s\S\n]*</thead>)', '\n  <thead>\n    <tr style="text-align: center;">\n      <th style="min-width: 195px;">Description</th>\n      <th style="min-width: 195px;">Value</th>\n    </tr>\n  </thead>\n',
+    facts_html)
+    return mars_facts
 
 def hemisphere_images(browser):
     # Use browser to visit the URL 

@@ -7,18 +7,19 @@
     <title>Mission to Mars</title>
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+      "
     />
   </head>
   <body>
-    <div class="container">
-      <!-- Add Jumbotron to Header -->
-      <div class="jumbotron text-center">
-        <h1>Mission to Mars</h1>
-        <!-- Add a button to activate scraping script -->
-        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
-      </div>
+    <!-- Add Jumbotron to Header -->
+    <div class="jumbotron text-center" style="background-color:lightseagreen">
+      <h1 >Mission to Mars</h1>
+      <!-- Add a button to activate scraping script -->
+      <p><a class="btn btn-success btn-lg round" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
 
+    <div class="container">
       <!-- Add section for Mars News -->
       <div class="row" id="mars-news">
         <div class="col-md-12">
@@ -35,7 +36,7 @@
       <!-- Section for Featured Image and Facts table -->
       <div class="row" id="mars-featured-image">
         <div class="col-md-8">
-          <h3>Featured Mars Image</h3>
+          <h3 class="text-center">Featured Mars Image</h3>
 
           <!-- if images is False/None/non-existent, then default to error message -->
           <img
@@ -48,7 +49,7 @@
         <div class="col-md-4">
           <!-- Mars Facts -->
           <div class="row" id="mars-facts">
-            <h3>Mars Facts</h3>
+            <h3 class="text-center">Mars Facts</h3>
             {{ mars.facts | safe }}
           </div>
         </div>

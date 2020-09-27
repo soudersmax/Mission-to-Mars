@@ -86,7 +86,13 @@ df.set_index('description', inplace=True)
 df
 
 # convert df back to html with pd.to_html()
-df.to_html()
+facts_html = df.to_html()
+
+# when setting 'description' to index, it introduces an extra cell to the left of value and the right of description. Since
+# our html is now in string, I'm going to use regex to remove the characters that add those extra spaces for aesthetic
+# purposes
+import re
+mars_facts = re.sub('(<th></th>\\n\s+<th>value</th>\\n\s+</tr>\\n\s+<tr>\\n)','<th>value</th>',facts_html)
 
 # # D1: Scrape High-Resolution Mars’ Hemisphere Images and Titles
 
